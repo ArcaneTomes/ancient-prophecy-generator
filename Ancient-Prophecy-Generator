@@ -1,0 +1,45 @@
+function generateProphecy() {
+  const descriptor = [
+    'The Chosen', 'The Lost', 'The Fallen', 'The Last', 'The Silent', 'The Hidden', 'The Wandering', 'The Cursed', 'The Forgotten', 'The Eternal', 'The Shadowed', 'The Celestial', 'The Unseen', 'The Shattered', 'The Boundless', 'The Ancient', 'The Forsaken', 'The Unbreakable' 
+  ];
+
+  const person = [
+    'Child', 'Warrior', 'Guardian', 'Seeker', 'Wanderer', 'Scribe', 'Keeper', 'Fool', 'Dreamer', 'Hunter', 'Queen', 'King', 'Prince', 'Princess', 'Knight', 'Mage', 'Bard', 'Thief', 'Healer', 'Rogue', 'Sorcerer', 'Alchemist', 'Prophet', 'Nomad', 'Outcast', 'Rebel', 'Visionary'
+  ];
+
+  const action = [
+    'will rise from', 'shall fall from', 'will unite', 'shall divide', 'will awaken', 'shall be reborn from', 'will conquer', 'shall perish', 'will discover', 'shall forsake', 'will embrace', 'shall betray', 'will lead', 'shall follow', 'will protect', 'shall destroy', 'will illuminate', 'shall shroud'
+  ];
+
+  const object = [
+    'the light', 'the darkness', 'the truth', 'the lies', 'the flame', 'the storm', 'the void', 'the dawn', 'the dusk', 'the abyss', 'the horizon', 'the past', 'the future', 'the dream', 'the nightmare', 'the heart', 'the mind', 'the world', 'the knowledge', 'the power', 'the fate', 'the realm'
+  ];
+
+  const setting = [
+    'at the end of time', 'at the beginning of all things', 'at the edge of the world', 'at the heart of the storm', 'at the dawn of creation', 'at the dusk of existence', 'at the gates of oblivion', 'at the crossroads of fate', 'at the summit of despair', 'at the valley of hope', 'at the shores of eternity', 'at the depths of madness', 'at the threshold of reality', 'at the ruins of time'
+  ];
+
+  const conditions = [
+    'when the stars align', 'when the moon wanes', 'when the sun rises', 'when the shadows fall', 'when the tides turn', 'when the winds change', 'when the earth shakes', 'when the skies darken', 'when the fires burn', 'when the waters rise', 'when the dreams shatter', 'when the nightmares awaken', 'when the past collides with the future'
+  ]
+
+    const usedWords = new Set();
+
+    function pickAndFilter(array, usedWords) {
+        const filtered = array.filter(phrase => !phrase.split(/\s+/).some(word => usedWords.has(word)));
+        if (filtered.length === 0) return array[Math.floor(Math.random() * array.length)]; // Fallback if all are removed
+        const choice = filtered[Math.floor(Math.random() * filtered.length)];
+        choice.split(/\s+/).forEach(word => usedWords.add(word)); // Add words to used set
+        return choice;
+}
+    const theDescriptor = pickAndFilter(descriptor, usedWords);
+    const thePerson = pickAndFilter(person, usedWords);
+    const theAction = pickAndFilter(action, usedWords);
+    const theObject = pickAndFilter(object, usedWords);
+    const theSetting = pickAndFilter(setting, usedWords);
+    const theConditions = pickAndFilter(conditions, usedWords);
+
+    return `${theDescriptor} ${thePerson} ${theAction} ${theObject} ${theSetting} ${theConditions}.`;
+}; 
+
+console.log(generateProphecy()) 
