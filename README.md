@@ -1,1 +1,1 @@
-# ancient-prophecy-generator
+An ancient prophecy generator. 
